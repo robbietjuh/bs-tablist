@@ -88,8 +88,8 @@ public class Main extends JavaPlugin implements Listener {
 			if(onlineServers.length > 0) {
 				for(Server server : onlineServers) {
 					TabAPI.setTabString(plugin, p, curRow, 0, ChatColor.BOLD + "" + server.serverName);
-					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull() + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "      Open");
-					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull() + ChatColor.GRAY + "" + server.serverPlayers + " online");
+					TabAPI.setTabString(plugin, p, curRow, 1, TabAPI.nextNull() + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "      Open");
+					TabAPI.setTabString(plugin, p, curRow, 2, TabAPI.nextNull() + ChatColor.GRAY + "" + server.serverPlayers + " online");
 					curRow ++;
 				}
 				if(offlineServers.length > 0) {
@@ -103,8 +103,8 @@ public class Main extends JavaPlugin implements Listener {
 			if(offlineServers.length > 0) {
 				for(Server server : offlineServers) {
 					TabAPI.setTabString(plugin, p, curRow, 0, ChatColor.BOLD + "" + server.serverName);
-					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull() + ChatColor.DARK_RED + "  Onderhoud");
-					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull());
+					TabAPI.setTabString(plugin, p, curRow, 1, TabAPI.nextNull() + ChatColor.DARK_RED + "  Onderhoud");
+					TabAPI.setTabString(plugin, p, curRow, 2, TabAPI.nextNull());
 					curRow ++;
 				}
 			}
