@@ -66,11 +66,28 @@ public class Main extends JavaPlugin implements Listener {
 		if(getServer().getServerName().equalsIgnoreCase("hub")) {
 			// Players don't have to know which players are in the lobby/hub server. We'll
 			// serve them other, hopefully more interesting information.
-			// Todo
+			
+			// Todo: bs-framework implementation
 		}
 		else {
-			// Fill up the rest of the slots with whatever players are online
-			// Todo
+			// Fill up the rest of the slots with whatever players are currently online
+			Player[] playerList = getServer().getOnlinePlayers();
+			int verticalMax = 15; // God I'm bad at maths... XD
+			
+			if(playerList.length < 15) verticalMax = (int) Math.ceil(playerList.length / 3);
+			
+			for(int vertical = 0; vertical < verticalMax; vertical++) {
+				for(int horizontal = 0; horizontal < 3; horizontal++) {
+					if(vertical * 3 + horizontal > playerList.length) {
+						// We can't let this slot 'left open', so we'll have to put in some random
+						// junk TabAPI perfectly can create for us using its nextNull() method
+						TabAPI.setTabString(plugin, p, vertical + 4, horizontal, TabAPI.nextNull());
+					}
+					else {
+						TabAPI.setTabString(plugin, p, vertical + 4, horizontal, playerList[vertical * 3 + horizontal].getPlayerListName());
+					}
+				}
+			}
 		}
 	}
 }
