@@ -80,9 +80,9 @@
 	  <systemPath>D:\CI Data\tabapi.jar</systemPath>
 	</dependency>
     <dependency>
-	  <groupId>org.mcsg.double0negative.tabapi</groupId>
-	  <artifactId>TabAPI</artifactId>
-	  <version>B 0.1.15</version>
+	  <groupId>net.robbytu.banjoserver.framework</groupId>
+	  <artifactId>bs-framework</artifactId>
+	  <version>1.0-SNAPSHOT</version>
 	  <scope>system</scope>
 	  <systemPath>D:\CI Data\bs-framework.jar</systemPath>
 	</dependency>
