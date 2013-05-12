@@ -87,10 +87,12 @@ public class Main extends JavaPlugin implements Listener {
 			
 			if(onlineServers.length > 0) {
 				for(Server server : onlineServers) {
-					TabAPI.setTabString(plugin, p, curRow, 0, ChatColor.BOLD + "" + server.serverName);
-					TabAPI.setTabString(plugin, p, curRow, 1, TabAPI.nextNull() + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "      Open");
-					TabAPI.setTabString(plugin, p, curRow, 2, TabAPI.nextNull() + ChatColor.GRAY + "" + server.serverPlayers + " online");
-					curRow ++;
+					if(!server.serverName.equalsIgnoreCase("hub")) {
+						TabAPI.setTabString(plugin, p, curRow, 0, ChatColor.BOLD + "" + server.serverName);
+						TabAPI.setTabString(plugin, p, curRow, 1, TabAPI.nextNull() + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "      Open");
+						TabAPI.setTabString(plugin, p, curRow, 2, TabAPI.nextNull() + ChatColor.GRAY + "" + server.serverPlayers + " online");
+						curRow ++;
+					}
 				}
 				if(offlineServers.length > 0) {
 					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull());
