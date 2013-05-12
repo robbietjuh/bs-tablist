@@ -58,6 +58,10 @@ public class Main extends JavaPlugin implements Listener {
 		TabAPI.setTabString(plugin, p, 3, 0, ChatColor.DARK_AQUA + getServer().getServerName());
 		TabAPI.setTabString(plugin, p, 3, 1, ChatColor.DARK_AQUA + "" + getServer().getOnlinePlayers().length);
 		TabAPI.setTabString(plugin, p, 3, 2, ChatColor.DARK_AQUA + "0 / 256"); // Todo: bs-framework implementation
+
+		TabAPI.setTabString(plugin, p, 4, 0, TabAPI.nextNull());
+		TabAPI.setTabString(plugin, p, 4, 1, TabAPI.nextNull());
+		TabAPI.setTabString(plugin, p, 4, 2, TabAPI.nextNull());
 		
 		if(getServer().getServerName().equalsIgnoreCase("hub")) {
 			// Players don't have to know which players are in the lobby/hub server. We'll
