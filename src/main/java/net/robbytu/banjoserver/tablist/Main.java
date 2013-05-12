@@ -37,6 +37,9 @@ public class Main extends JavaPlugin implements Listener {
 			public void run() {
 				// Build a tablist for the player
 				buildTablist(p);
+				
+				// Update player's tablist
+				TabAPI.updatePlayer(p);
 			}
 		}, 1);
 	}
