@@ -92,6 +92,12 @@ public class Main extends JavaPlugin implements Listener {
 					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull() + ChatColor.GRAY + "" + server.serverPlayers + " online");
 					curRow ++;
 				}
+				if(offlineServers.length > 0) {
+					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull());
+					TabAPI.setTabString(plugin, p, curRow, 1, TabAPI.nextNull());
+					TabAPI.setTabString(plugin, p, curRow, 2, TabAPI.nextNull());
+					curRow ++;
+				}
 			}
 		}
 		else {
