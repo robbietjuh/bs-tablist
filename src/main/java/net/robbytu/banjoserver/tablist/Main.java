@@ -1,5 +1,8 @@
 package net.robbytu.banjoserver.tablist;
 
+import net.robbytu.banjoserver.framework.api.ServerAPI;
+import net.robbytu.banjoserver.framework.interfaces.Server;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -77,7 +80,19 @@ public class Main extends JavaPlugin implements Listener {
 			// Players don't have to know which players are in the lobby/hub server. We'll
 			// serve them other, hopefully more interesting information.
 			
-			// Todo: bs-framework implementation
+			// Fetch servers
+			Server[] onlineServers = ServerAPI.getOnlineServers();
+			Server[] offlineServers = ServerAPI.getOfflineServers();
+			int curRow = 5;
+			
+			if(onlineServers.length > 0) {
+				for(Server server : onlineServers) {
+					TabAPI.setTabString(plugin, p, curRow, 0, ChatColor.BOLD + "" + server.serverName);
+					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull() + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "      Open");
+					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull() + ChatColor.GRAY + "" + server.serverPlayers + " online");
+					curRow ++;
+				}
+			}
 		}
 		else {
 			// Fill up the rest of the slots with whatever players are currently online
