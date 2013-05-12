@@ -1,0 +1,4 @@
+name: bs-tablist
+main: net.robbytu.banjoserver.tablist.Main
+version: ${version}
+depend: [ProtocolLib, TabAPI]
