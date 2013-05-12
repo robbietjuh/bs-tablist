@@ -17,6 +17,13 @@ public class Main extends JavaPlugin implements Listener {
 		// Register for events
 		getServer().getPluginManager().registerEvents(this, this);
 		
+		// Register a scheduler to update the tab list of every online player, every 30 seconds
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+			public void run() {
+				updateTablist();
+			}
+		}, 20, 200);
+		
 		// We're done! Yay!
 		getLogger().info("Tablist has been enabled.");
 	}
@@ -92,5 +99,9 @@ public class Main extends JavaPlugin implements Listener {
 				}
 			}
 		}
+	}
+	
+	private void updateTablist() {
+		// Todo
 	}
 }
