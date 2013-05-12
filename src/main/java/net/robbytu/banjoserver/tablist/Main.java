@@ -55,6 +55,12 @@ public class Main extends JavaPlugin implements Listener {
 	}
 	
 	private void buildTablist(Player p) {
+		// Calculate total online for later use
+		int totalOnline = 0;
+		for(Server server : ServerAPI.getOnlineServers()) {
+			totalOnline += server.serverPlayers;
+		}
+		
 		// Build up the basic tablist
 		TabAPI.setTabString(plugin, p, 0, 0, TabAPI.nextNull());
 		TabAPI.setTabString(plugin, p, 0, 1, ChatColor.RED + "" + ChatColor.BOLD + "Banjoserver");
@@ -70,7 +76,7 @@ public class Main extends JavaPlugin implements Listener {
 
 		TabAPI.setTabString(plugin, p, 3, 0, ChatColor.DARK_AQUA + getServer().getServerName());
 		TabAPI.setTabString(plugin, p, 3, 1, ChatColor.DARK_AQUA + "" + getServer().getOnlinePlayers().length);
-		TabAPI.setTabString(plugin, p, 3, 2, ChatColor.DARK_AQUA + "0 / 256"); // Todo: bs-framework implementation
+		TabAPI.setTabString(plugin, p, 3, 2, ChatColor.DARK_AQUA + "" + totalOnline + " / 256");
 
 		TabAPI.setTabString(plugin, p, 4, 0, TabAPI.nextNull());
 		TabAPI.setTabString(plugin, p, 4, 1, TabAPI.nextNull());
