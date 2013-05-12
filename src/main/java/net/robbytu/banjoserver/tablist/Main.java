@@ -88,7 +88,7 @@ public class Main extends JavaPlugin implements Listener {
 			
 			for(int vertical = 0; vertical < verticalMax; vertical++) {
 				for(int horizontal = 0; horizontal < 3; horizontal++) {
-					if(vertical * 3 + horizontal > playerList.length) {
+					if(vertical * 3 + horizontal > playerList.length - 1) {
 						// We can't let this slot 'left open', so we'll have to put in some random
 						// junk TabAPI perfectly can create for us using its nextNull() method
 						TabAPI.setTabString(plugin, p, vertical + 5, horizontal, TabAPI.nextNull());
