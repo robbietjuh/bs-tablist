@@ -102,6 +102,12 @@ public class Main extends JavaPlugin implements Listener {
 	}
 	
 	private void updateTablist() {
-		// Todo
+		// Build a tab list for every online player
+		for(Player p:getServer().getOnlinePlayers()) {
+			buildTablist(p);
+		}
+		
+		// Now send everyone's tablist
+		TabAPI.updateAll();
 	}
 }
