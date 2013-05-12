@@ -1,6 +1,7 @@
 package net.robbytu.banjoserver.tablist;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -41,6 +42,31 @@ public class Main extends JavaPlugin implements Listener {
 	}
 	
 	private void buildTablist(Player p) {
-		// Todo
+		// Build up the basic tablist
+		TabAPI.setTabString(plugin, p, 0, 0, TabAPI.nextNull());
+		TabAPI.setTabString(plugin, p, 0, 1, ChatColor.RED + "" + ChatColor.BOLD + "Banjoserver");
+		TabAPI.setTabString(plugin, p, 0, 2, TabAPI.nextNull());
+		
+		TabAPI.setTabString(plugin, p, 1, 0, TabAPI.nextNull());
+		TabAPI.setTabString(plugin, p, 1, 1, TabAPI.nextNull());
+		TabAPI.setTabString(plugin, p, 1, 2, TabAPI.nextNull());
+		
+		TabAPI.setTabString(plugin, p, 2, 0, ChatColor.AQUA + "Server");
+		TabAPI.setTabString(plugin, p, 2, 1, ChatColor.AQUA + "Online in " + getServer().getServerName());
+		TabAPI.setTabString(plugin, p, 2, 2, ChatColor.AQUA + "Totaal online");
+
+		TabAPI.setTabString(plugin, p, 3, 0, ChatColor.DARK_AQUA + getServer().getServerName());
+		TabAPI.setTabString(plugin, p, 3, 1, ChatColor.DARK_AQUA + "" + getServer().getOnlinePlayers().length);
+		TabAPI.setTabString(plugin, p, 3, 2, ChatColor.DARK_AQUA + "0 / 256"); // Todo: bs-framework implementation
+		
+		if(getServer().getServerName().equalsIgnoreCase("hub")) {
+			// Players don't have to know which players are in the lobby/hub server. We'll
+			// serve them other, hopefully more interesting information.
+			// Todo
+		}
+		else {
+			// Fill up the rest of the slots with whatever players are online
+			// Todo
+		}
 	}
 }
