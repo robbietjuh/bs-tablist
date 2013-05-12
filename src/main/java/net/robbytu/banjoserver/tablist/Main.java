@@ -84,17 +84,17 @@ public class Main extends JavaPlugin implements Listener {
 			Player[] playerList = getServer().getOnlinePlayers();
 			int verticalMax = 15; // God I'm bad at maths... XD
 			
-			if(playerList.length < 15) verticalMax = (int) Math.ceil(playerList.length / 3);
+			if(playerList.length < 15) verticalMax = (int) Math.ceil(playerList.length / 3d);
 			
 			for(int vertical = 0; vertical < verticalMax; vertical++) {
 				for(int horizontal = 0; horizontal < 3; horizontal++) {
 					if(vertical * 3 + horizontal > playerList.length) {
 						// We can't let this slot 'left open', so we'll have to put in some random
 						// junk TabAPI perfectly can create for us using its nextNull() method
-						TabAPI.setTabString(plugin, p, vertical + 4, horizontal, TabAPI.nextNull());
+						TabAPI.setTabString(plugin, p, vertical + 5, horizontal, TabAPI.nextNull());
 					}
 					else {
-						TabAPI.setTabString(plugin, p, vertical + 4, horizontal, playerList[vertical * 3 + horizontal].getPlayerListName());
+						TabAPI.setTabString(plugin, p, vertical + 5, horizontal, playerList[vertical * 3 + horizontal].getPlayerListName());
 					}
 				}
 			}
