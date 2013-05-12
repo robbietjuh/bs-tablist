@@ -99,6 +99,15 @@ public class Main extends JavaPlugin implements Listener {
 					curRow ++;
 				}
 			}
+			
+			if(offlineServers.length > 0) {
+				for(Server server : offlineServers) {
+					TabAPI.setTabString(plugin, p, curRow, 0, ChatColor.BOLD + "" + server.serverName);
+					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull() + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "      Open");
+					TabAPI.setTabString(plugin, p, curRow, 0, TabAPI.nextNull() + ChatColor.GRAY + "" + server.serverPlayers + " online");
+					curRow ++;
+				}
+			}
 		}
 		else {
 			// Fill up the rest of the slots with whatever players are currently online
