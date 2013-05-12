@@ -94,7 +94,8 @@ public class Main extends JavaPlugin implements Listener {
 						TabAPI.setTabString(plugin, p, vertical + 5, horizontal, TabAPI.nextNull());
 					}
 					else {
-						TabAPI.setTabString(plugin, p, vertical + 5, horizontal, playerList[vertical * 3 + horizontal].getPlayerListName());
+						Player currentPlayer = playerList[vertical * 3 + horizontal];
+						TabAPI.setTabString(plugin, p, vertical + 5, horizontal, (currentPlayer.isOp() ? ChatColor.BOLD + "" + ChatColor.RED : "") + currentPlayer.getPlayerListName());
 					}
 				}
 			}
