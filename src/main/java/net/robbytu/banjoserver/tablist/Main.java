@@ -9,8 +9,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mcsg.double0negative.tabapi.TabAPI;
+
+import java.util.ArrayList;
 
 public class Main extends JavaPlugin implements Listener {
 	final Main plugin = this;
@@ -119,20 +122,31 @@ public class Main extends JavaPlugin implements Listener {
 		}
 		else {
 			// Fill up the rest of the slots with whatever players are currently online
-			Player[] playerList = getServer().getOnlinePlayers();
-			int verticalMax = 15; // God I'm bad at maths... XD
-			
-			if(playerList.length < 15) verticalMax = (int) Math.ceil(playerList.length / 3d);
-			
-			for(int vertical = 0; vertical < verticalMax; vertical++) {
+			ArrayList<Player> playerList = new ArrayList<Player>();
+
+            for(Player player : getServer().getOnlinePlayers()) {
+                playerList.add(player);
+                for(final MetadataValue value : player.getMetadata("vanished")) {
+                    // Remove vanished players
+                    if(value.getOwningPlugin().getName().equals("VanishNoPacket") && value.asBoolean()) {
+                        playerList.remove(player);
+                    }
+                }
+            }
+
+            // Build the actual list of players
+			int verticalMax = 15;
+            if(playerList.size() < 15) verticalMax = (int) Math.ceil(playerList.size() / 3d);
+
+            for(int vertical = 0; vertical < verticalMax; vertical++) {
 				for(int horizontal = 0; horizontal < 3; horizontal++) {
-					if(vertical * 3 + horizontal > playerList.length - 1) {
+					if(vertical * 3 + horizontal > playerList.size() - 1) {
 						// We can't let this slot 'left open', so we'll have to put in some random
 						// junk TabAPI perfectly can create for us using its nextNull() method
 						TabAPI.setTabString(plugin, p, vertical + 5, horizontal, TabAPI.nextNull());
 					}
 					else {
-						Player currentPlayer = playerList[vertical * 3 + horizontal];
+						Player currentPlayer = playerList.get(vertical * 3 + horizontal);
 						TabAPI.setTabString(plugin, p, vertical + 5, horizontal, (currentPlayer.isOp() ? ChatColor.RED + "" + ChatColor.BOLD : "") + currentPlayer.getPlayerListName());
 					}
 				}
