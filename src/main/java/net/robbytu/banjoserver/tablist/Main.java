@@ -20,7 +20,7 @@ public class Main extends JavaPlugin implements Listener {
 	
 	@Override
 	public void onEnable() {
-		// Register for events
+		// Register for utils
 		getServer().getPluginManager().registerEvents(this, this);
 		
 		// Register a scheduler to update the tab list of every online player, every 30 seconds
