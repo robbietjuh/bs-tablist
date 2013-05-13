@@ -98,8 +98,8 @@ public class Main extends JavaPlugin implements Listener {
 				for(Server server : onlineServers) {
 					if(!server.serverName.equalsIgnoreCase("hub")) {
 						TabAPI.setTabString(plugin, p, curRow, 0, ChatColor.BOLD + "" + server.serverName);
-						TabAPI.setTabString(plugin, p, curRow, 1, TabAPI.nextNull() + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "      Open");
-						TabAPI.setTabString(plugin, p, curRow, 2, TabAPI.nextNull() + ChatColor.GRAY + "" + server.serverPlayers + " online");
+						TabAPI.setTabString(plugin, p, curRow, 1, ChatColor.DARK_GREEN + "" + ChatColor.BOLD + " + Open" + TabAPI.nextNull());
+						TabAPI.setTabString(plugin, p, curRow, 2, ChatColor.GRAY + "" + server.serverPlayers + " online" + TabAPI.nextNull());
 						curRow ++;
 					}
 				}
@@ -114,7 +114,7 @@ public class Main extends JavaPlugin implements Listener {
 			if(offlineServers.length > 0) {
 				for(Server server : offlineServers) {
 					TabAPI.setTabString(plugin, p, curRow, 0, ChatColor.BOLD + "" + server.serverName);
-					TabAPI.setTabString(plugin, p, curRow, 1, TabAPI.nextNull() + ChatColor.DARK_RED + "  Onderhoud");
+					TabAPI.setTabString(plugin, p, curRow, 1, ChatColor.DARK_RED + " - Onderhoud" + TabAPI.nextNull()); // Fixes BTP-5
 					TabAPI.setTabString(plugin, p, curRow, 2, TabAPI.nextNull());
 					curRow ++;
 				}
