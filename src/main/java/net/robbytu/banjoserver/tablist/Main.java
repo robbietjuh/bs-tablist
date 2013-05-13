@@ -113,10 +113,12 @@ public class Main extends JavaPlugin implements Listener {
 			
 			if(offlineServers.length > 0) {
 				for(Server server : offlineServers) {
-					TabAPI.setTabString(plugin, p, curRow, 0, ChatColor.BOLD + "" + server.serverName);
-					TabAPI.setTabString(plugin, p, curRow, 1, ChatColor.DARK_RED + "Onderhoud" + TabAPI.nextNull()); // Fixes BTP-5
-					TabAPI.setTabString(plugin, p, curRow, 2, TabAPI.nextNull());
-					curRow ++;
+					if(!server.serverName.equals("")) {
+                        TabAPI.setTabString(plugin, p, curRow, 0, ChatColor.BOLD + "" + server.serverName);
+                        TabAPI.setTabString(plugin, p, curRow, 1, ChatColor.DARK_RED + "Onderhoud" + TabAPI.nextNull()); // Fixes BTP-5
+                        TabAPI.setTabString(plugin, p, curRow, 2, TabAPI.nextNull());
+                        curRow ++;
+                    }
 				}
 			}
 		}
