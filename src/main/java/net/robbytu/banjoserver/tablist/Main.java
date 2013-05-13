@@ -125,11 +125,12 @@ public class Main extends JavaPlugin implements Listener {
 			ArrayList<Player> playerList = new ArrayList<Player>();
 
             for(Player player : getServer().getOnlinePlayers()) {
+                // Add the player to the player list
                 playerList.add(player);
                 for(final MetadataValue value : player.getMetadata("vanished")) {
-                    // Remove vanished players
                     if(value.getOwningPlugin().getName().equals("VanishNoPacket") && value.asBoolean()) {
-                        playerList.remove(player);
+                        // Ops may see vanished players. If p isn't a op, remove the player from the player list
+                        if(!p.isOp()) playerList.remove(player);
                     }
                 }
             }
